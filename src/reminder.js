@@ -10,8 +10,21 @@
  * Example Usage:
  * delayedReminder("Time to stretch!", 3000).then(() => console.log("Reminder done."));
  */
-function delayedReminder(message, delay) {
-  // Return a promise
-  // Use setTimeout to log the message after the specified delay
-  // Resolve the promise once the message is logged
+// function delayedReminder(message, delay) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       console.log(message);
+//       resolve();
+//     }, delay);
+//   });
+// }
+
+
+function delayedReminder(message, delay, callback) {
+  setTimeout(function() {
+    console.log(message);
+    if (callback) {
+      callback(); // Call the callback when the message is logged
+    }
+  }, delay);
 }

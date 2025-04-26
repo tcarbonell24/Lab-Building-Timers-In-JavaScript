@@ -1,4 +1,4 @@
-/**
+/** 
  * Function: countdownTimer
  * Description: Creates a countdown timer that logs the remaining time at regular intervals and stops at 0.
  *
@@ -11,10 +11,34 @@
  * Example Usage:
  * countdownTimer(10, 1000); // Logs remaining time every second for 10 seconds.
  */
-function countdownTimer(startTime, interval) {
-  // Initialize the remaining time
-  // Set up a timer using setInterval
-  // Log the remaining time and decrement it
-  // Stop the timer when time reaches 0
-  // Return the timer ID for validation
+function countdownTimer(startTime, interval) { 
+  
+  let remainingTime = startTime; 
+  
+  let timerID = setInterval(() => { 
+    //console.log(remainingTime); 
+    
+    if (remainingTime >= 0) { 
+      console.log(remainingTime);
+      //console.log(`inside if statement: remaining time == ${remainingTime}`);
+      remainingTime--; 
+      //clearInterval(timerID); 
+    } else {
+      clearInterval(timerID);
+      //console.log(`inside else statement, interval has been cleared and timerID = ${timerID}`) 
+    } 
+  
+  }, interval); 
+    return timerID; // Return the timerID for validation 
+
 }
+
+countdownTimer(10, 500);
+
+
+module.exports = { countdownTimer };
+
+// let timerID = countdownTimer(5, 500); 
+
+// console.log(`Timer ID: ${timerID}`); 
+
